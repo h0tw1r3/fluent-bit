@@ -10,6 +10,9 @@ else()
 endif()
 
 include(GNUInstallDirs)
+if ("${CMAKE_INSTALL_PREFIX}" MATCHES "^/?usr/?$" AND "${CMAKE_INSTALL_SYSCONFDIR}" MATCHES "/?etc/?")
+  set(CMAKE_INSTALL_SYSCONFDIR "/etc")
+endif()
 include(ExternalProject)
 
 # Output paths
@@ -415,11 +418,10 @@ endif()
 ### CPACK / RPM
 set(CPACK_PACKAGE_VERSION ${FLB_VERSION_STR})
 set(CPACK_GENERATOR "RPM")
-set(CPACK_PACKAGE_NAME "td-agent-bit")
+set(CPACK_PACKAGE_NAME ${FLB_OUT_NAME})
 set(CPACK_PACKAGE_RELEASE 1)
 set(CPACK_PACKAGE_CONTACT "Eduardo Silva <eduardo@treasure-data.com>")
 set(CPACK_PACKAGE_VENDOR "Treasure Data")
-set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/td-agent-bit")
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CMAKE_SYSTEM_PROCESSOR}")
 set(CPACK_RPM_PACKAGE_GROUP "System Environment/Daemons")
 set(CPACK_RPM_PACKAGE_LICENSE "Apache v2.0")
@@ -434,5 +436,4 @@ set(CPACK_RPM_USER_FILELIST
 	"%ignore /lib64/pkgconfig"
 	"%ignore /opt"
 	"%ignore /etc")
-set(CPACK_PACKAGING_INSTALL_PREFIX "/")
 include(CPack)

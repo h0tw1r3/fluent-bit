@@ -208,7 +208,7 @@ if(NOT FLB_WITHOUT_BIN)
     PROPERTIES
     OUTPUT_NAME ${FLB_OUT_NAME}
     ENABLE_EXPORTS ON)
-  install(TARGETS fluent-bit-bin RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
+  install(TARGETS fluent-bit-bin RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
   # Detect init system, install systemd or init.d script
   if(IS_DIRECTORY /lib/systemd/system)
