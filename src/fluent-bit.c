@@ -437,7 +437,7 @@ int main(int argc, char **argv)
     int last_plugin = -1;
 
     /* local variables to handle config options */
-    char *cfg_file = NULL;
+    char *cfg_file = flb_strdup(FLB_CONFIG_FILE);
     struct flb_input_instance *in = NULL;
     struct flb_output_instance *out = NULL;
     struct flb_filter_instance *filter = NULL;

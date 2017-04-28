@@ -390,6 +390,10 @@ if(NOT FLB_WITHOUT_INOTIFY)
   endif()
 endif()
 
+# Config Defaults
+set(FLB_CONFIG_FILE         "${CMAKE_INSTALL_SYSCONFDIR}/${FLB_OUT_NAME}/${FLB_OUT_NAME}.conf")
+set(FLB_CONFIG_PARSERS_FILE "${CMAKE_INSTALL_SYSCONFDIR}/${FLB_OUT_NAME}/parsers.conf")
+
 configure_file(
   "${PROJECT_SOURCE_DIR}/include/fluent-bit/flb_info.h.in"
   "${PROJECT_SOURCE_DIR}/include/fluent-bit/flb_info.h"
@@ -398,6 +402,11 @@ configure_file(
 configure_file(
   "${PROJECT_SOURCE_DIR}/include/fluent-bit/flb_version.h.in"
   "${PROJECT_SOURCE_DIR}/include/fluent-bit/flb_version.h"
+  )
+
+configure_file(
+  "${PROJECT_SOURCE_DIR}/include/fluent-bit/flb_config.h.in"
+  "${PROJECT_SOURCE_DIR}/include/fluent-bit/flb_config.h"
   )
 
 # Instruct CMake to build the Fluent Bit Core

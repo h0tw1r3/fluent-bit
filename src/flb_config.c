@@ -104,6 +104,7 @@ struct flb_config *flb_config_init()
     config->init_time    = time(NULL);
     config->kernel       = flb_kernel_info();
     config->verbose      = 3;
+    config->parsers_file = flb_strdup(FLB_CONFIG_PARSERS_FILE);
 
 #ifdef FLB_HAVE_HTTP
     config->http_server  = FLB_FALSE;
